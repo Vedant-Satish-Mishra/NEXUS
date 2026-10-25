@@ -1,0 +1,21 @@
+# NEXUS Code Owners by Track
+# Track A: Frontend & Animations
+/frontend/ @team-nexus/track-a-frontend
+/nexus frontend/ @team-nexus/track-a-frontend
+
+# Track B: Agents & LangGraph
+/backend/app/agents/ @team-nexus/track-b-agents
+/backend/app/tools/ @team-nexus/track-b-agents
+
+# Track C: RAG & Ingestion
+/backend/app/rag/ @team-nexus/track-c-rag
+/data/knowledge/ @team-nexus/track-c-rag
+
+# Track D: Backend, DB, Sandbox & Deployment
+/backend/app/api/ @team-nexus/track-d-backend
+/backend/app/db/ @team-nexus/track-d-backend
+/backend/app/core/ @team-nexus/track-d-backend
+/backend/app/schemas/ @team-nexus/all-tracks
+/contracts/ @team-nexus/all-tracks
+/sandbox/ @team-nexus/track-d-backend
+/docker/ @team-nexus/track-d-backend

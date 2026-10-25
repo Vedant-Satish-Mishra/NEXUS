@@ -1,0 +1,122 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nexus_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: nexus_password
+      POSTGRES_DB: nexus
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexus -d nexus"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    mem_limit: 1024m
+
+  sandbox:
+    build:
+      context: ./sandbox
+    container_name: nexus_sandbox
+    restart: unless-stopped
+    networks:
+      - sandbox_net
+    read_only: true
+    tmpfs:
+      - "/tmp:size=64m"
+    user: "65534:65534"
+    cap_drop:
+      - ALL
+    security_opt:
+      - "no-new-privileges:true"
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 64
+    environment:
+      - SANDBOX_KEY=nexus_dev_sandbox_shared_secret
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: nexus_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/app/data/chroma
+      - uploads_data:/app/uploads
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    mem_limit: 2048m
+    networks:
+      - default
+      - sandbox_net
+
+  neo4j:
+    image: neo4j:5-community
+    container_name: nexus_neo4j
+    profiles:
+      - graph
+    environment:
+      - NEO4J_AUTH=neo4j/nexus_graph_secret
+      - NEO4J_server_memory_heap_initial__size=256m
+      - NEO4J_server_memory_heap_max__size=512m
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    mem_limit: 768m
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: nexus_prometheus
+    profiles:
+      - monitoring
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    mem_limit: 256m
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: nexus_grafana
+    profiles:
+      - monitoring
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    mem_limit: 256m
+
+networks:
+  default:
+  sandbox_net:
+    internal: true
+
+volumes:
+  postgres_data:
+    name: nexus_postgres_data
+  chroma_data:
+    name: nexus_chroma_data
+  uploads_data:
+    name: nexus_uploads_data
+  neo4j_data:
+    name: nexus_neo4j_data
+  grafana_data:
+    name: nexus_grafana_data

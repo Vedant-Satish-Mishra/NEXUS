@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "generated_by": "scripts/build_knowledge_pack.py",
+  "file_count": 12,
+  "total_bytes": 19284,
+  "total_estimated_chunks": 12,
+  "files": [
+    {
+      "filename": "dbms_normalization.md",
+      "sha256": "9f7402ef2ad8ef87685ed9298f926faa6f0cace75e1722256257df468370eb66",
+      "size_bytes": 1619,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "dbms_transactions_acid.md",
+      "sha256": "96a98531836a6114295903708a3b77d1c47f6edaded5ac15d1a6de8dda347664",
+      "size_bytes": 1273,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "dsa_arrays_strings.md",
+      "sha256": "74af265c6925516bb4303d8d047320cb8c0964f859b0386bcf64edbd35a16a0d",
+      "size_bytes": 1459,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "dsa_dynamic_programming.md",
+      "sha256": "e7b51ae6df4f729a8f89c593caa9dd101a04003795cb036f5e518952b47912ac",
+      "size_bytes": 1383,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "dsa_trees_graphs.md",
+      "sha256": "d622437f36ecbab92556f6b616c5a6229e7b247e33e5741be3d0a27d3c5b7f6f",
+      "size_bytes": 1722,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "interview_system_design_basics.md",
+      "sha256": "534415c97cff8024eb26525b25b8a3096e275d8f35f2edba069da2d38ccd6ac1",
+      "size_bytes": 1524,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "java_collections_streams.md",
+      "sha256": "c2b6ab951e51b13cf4ba7f912c244a705a596a9cac3938118c45d1ab012786d2",
+      "size_bytes": 1687,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "java_jvm_architecture.md",
+      "sha256": "08bd311c683da9742aac5f7fe63595fdf861ad4efe8c63e568ac00bc34097fa8",
+      "size_bytes": 2055,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "os_process_memory_paging.md",
+      "sha256": "daf075486fb3a50f5ad5ae9d655b6556632a1f3fcdbfc6ee012ba01b23d5da07",
+      "size_bytes": 1456,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "python_concurrency_asyncio.md",
+      "sha256": "f7c713b92afa6513b6f8d70225e3a2f85a9e44556106699bfa64cf9d7138edbd",
+      "size_bytes": 1536,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "se_ci_cd_testing.md",
+      "sha256": "80a17e33c187053a4b21bc8cc8573d7aeefc30b76177843cfaed991f8690ba19",
+      "size_bytes": 1426,
+      "estimated_chunks": 1
+    },
+    {
+      "filename": "se_design_patterns_solid.md",
+      "sha256": "f49cca5c880cc6900dfa6254e2928701e956b71a064a95c5f3f9d39f091d0ec3",
+      "size_bytes": 2144,
+      "estimated_chunks": 1
+    }
+  ],
+  "corpus_sha256": "549c37b6a3e9d33a92fbfbda7d0794f43a6bc4249b51d9179070c2c5082d6953"
+}
